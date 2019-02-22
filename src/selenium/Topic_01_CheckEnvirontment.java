@@ -17,19 +17,19 @@ public class Topic_01_CheckEnvirontment {
 		driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		driver.get("http://live.guru99.com/");
+		driver.get("https://medium.com/");
 	}
 
 	@Test
 	public void TC_01_CheckUrl() {
 		String homePageUrl = driver.getCurrentUrl();
-		Assert.assertEquals(homePageUrl, "http://live.guru99.com/");
+		Assert.assertEquals(homePageUrl, "https://medium.com/");
 	}
 	
 	@Test
 	public void TC_02_CheckTitle() {
 		String homePageTitle = driver.getTitle();
-		Assert.assertEquals(homePageTitle, "Home page");
+		Assert.assertEquals(homePageTitle, "Medium – a place to read and write big ideas and important stories");
 	}
 
 	@AfterTest
