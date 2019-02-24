@@ -30,7 +30,8 @@ public class Topic_01_CheckEnvirontment {
 	@Test
 	public void TC_02_CheckTitle() {
 		String homePageTitle = driver.getTitle();
-		Assert.assertEquals(homePageTitle, "Medium � a place to read and write big ideas and important stories");
+		Assert.assertEquals(homePageTitle, "Medium – a place to read and write big ideas and important stories");
+		 System.out.println("Mở website thành công!");
 	}
 
 	@AfterTest
