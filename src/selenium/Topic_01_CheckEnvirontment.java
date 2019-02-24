@@ -22,6 +22,7 @@ public class Topic_01_CheckEnvirontment {
 
 	@Test
 	public void TC_01_CheckUrl() {
+		//ok nhe
 		String homePageUrl = driver.getCurrentUrl();
 		Assert.assertEquals(homePageUrl, "https://medium.com/");
 	}
