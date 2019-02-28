@@ -17,8 +17,6 @@ public class Topic_04_Xpath_Part_01 {
 	public void beforeTest() {
 		driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		//driver.manage().window().maximize();
-		//driver.get("http://live.guru99.com/index.php/customer/account/login/");
 	}
 
 	@Test
