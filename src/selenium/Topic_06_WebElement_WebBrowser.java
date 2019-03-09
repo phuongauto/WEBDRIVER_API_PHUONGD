@@ -41,79 +41,74 @@ public class Topic_06_WebElement_WebBrowser {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 	 
-	// Fuction check element display
-	public boolean isElementDisplayed(By ok1) {
-		if (driver.findElement(ok1).isDisplayed()) {
-			System.out.println("Element " + ok1 + " is displayed" );
-			return true;
-		} else 
-		{
-			System.out.println("Element " + ok1 + " is not displayed" );
-			return false;
-		}
-		
+// 	Fuction check element display
+//	public boolean isElementDisplayed(By ok1) {
+//		if (driver.findElement(ok1).isDisplayed()) {
+//			System.out.println("Element " + ok1 + " is displayed" );
+//			return true;
+//		} else 
+//		{
+//			System.out.println("Element " + ok1 + " is not displayed" );
+//			return false;
+//		}
+//		
+//	}	
+//	public boolean isElementEnabled(By ok2) {
+//		if (driver.findElement(ok2).isEnabled()) {
+//			System.out.println("Element " + ok2 + " is enabled" );
+//			return true;
+//		} else 
+//		{
+//			System.out.println("Element " + ok2 + " is disabled" );
+//			return false;
+//		}
+//	}	
+//	public boolean isElementSelected(By ok3) {
+//		if (driver.findElement(ok3).isSelected()) {
+//			System.out.println("Element " + ok3 + " is selected" );
+//			return false;
+//		} else 
+//		{
+//			System.out.println("Element " + ok3 + " is not selected" );
+//			return true;
+//		}
+//	}	
+	public boolean isElementSelected(By Value) {
+		return driver.findElement(Value).isSelected();	
 	}	
-	public boolean isElementEnabled(By ok2) {
-		if (driver.findElement(ok2).isEnabled()) {
-			System.out.println("Element " + ok2 + " is enabled" );
-			return true;
-		} else 
-		{
-			System.out.println("Element " + ok2 + " is disabled" );
-			return false;
-		}
-	}	
-	public boolean isElementSelected(By ok3) {
-		if (driver.findElement(ok3).isSelected()) {
-			System.out.println("Element " + ok3 + " is selected" );
-			return false;
-		} else 
-			{
-			System.out.println("Element " + ok3 + " is not selected" );
-			return true;
-			}
-	}	
-	
-	@Test
-	public void TC03_CheckElementIsSelected() {
-		//Step 1: Open the URL
-		driver.get("https://daominhdam.github.io/basic-form/index.html");
-		driver.findElement(ageUnder18Radio).click();
-		driver.findElement(interestDevelopment).click();
-		
-		if (isElementSelected(ageUnder18Radio)) {
-			System.out.println("Element Age Under 18 is selected");
-		} else {
-			driver.findElement(ageUnder18Radio).click();
-		}
-		if (isElementSelected(interestDevelopment)) {
-			System.out.println("Element Interest Development is selected");
-		} else {
-			driver.findElement(interestDevelopment).click();
-		}
-		 
+	public boolean isElementEnabled(By Value) {
+		return driver.findElement(Value).isEnabled();
 	}
-		
-	
-	//@Test
+	public boolean isElementDisplayed(By Value) {
+		return driver.findElement(Value).isDisplayed();
+	}
+	@Test
 	public void TC01_CheckElementIsDisplayed() {
+		System.out.println("**********Start Test case 01:\n");
 		//Step 1: Open the URL
 		driver.get("https://daominhdam.github.io/basic-form/index.html");
 		//Step 2: Check Email/ Age (Under 18)/ Education are displayed then fill data
 		if (isElementDisplayed(emailTextbox)) {
+			System.out.println("Element Email is displayed");
 			driver.findElement(emailTextbox).sendKeys("Automation Testing");
+			System.out.println("Successfully input ''Automation Testing'' to Email field");
 		}
 		if (isElementDisplayed(eduTextarea)) {
+			System.out.println("Element Education is displayed");
 			driver.findElement(eduTextarea).sendKeys("Automation Testing");
+			System.out.println("Successfully input ''Automation Testing'' to Education field");
 		}
 		if (isElementDisplayed(ageUnder18Radio)) {
+			System.out.println("Element Age (Under 18) is displayed");
 			driver.findElement(ageUnder18Radio).click();
+			System.out.println("Successfully select Age Under 18");
+			
 		}
-		
 	}
-	//@Test
+	@Test
 	public void TC02_CheckElementIsEnabled() {
 		//Step 1: Open the URL
+		System.out.println("\n**********Start Test case 02:\n");
 		driver.get("https://daominhdam.github.io/basic-form/index.html");
 		if (isElementEnabled(emailTextbox)) {
 			System.out.println("Element Email is enabled");
@@ -184,12 +179,27 @@ public class Topic_06_WebElement_WebBrowser {
 			System.out.println("Element Slider 02 is enabled");
 		}	else {
 				System.out.println("Element Slider 02 is disabled");
-			}
-			
-		
+			}	
 		}
-
-	
+	@Test
+	public void TC03_CheckElementIsSelected() {
+		System.out.println("\n**********Start Test case 03:\n");
+		//Step 1: Open the URL
+		driver.get("https://daominhdam.github.io/basic-form/index.html");
+		driver.findElement(ageUnder18Radio).click();
+		driver.findElement(interestDevelopment).click();
+		
+		if (isElementSelected(ageUnder18Radio)) {
+			System.out.println("Element Age Under 18 is selected");
+		} else {
+			driver.findElement(ageUnder18Radio).click();
+		}
+		if (isElementSelected(interestDevelopment)) {
+			System.out.println("Element Interest Development is selected");
+		} else {
+			driver.findElement(interestDevelopment).click();
+		}
+	}
 	@AfterTest
 	public void afterTest() {
 	}
