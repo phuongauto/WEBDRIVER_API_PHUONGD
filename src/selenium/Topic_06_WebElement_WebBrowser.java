@@ -20,17 +20,17 @@ import org.testng.annotations.AfterTest;
 public class Topic_06_WebElement_WebBrowser {
 	WebDriver driver;
 	By emailTextbox = By.xpath("//input[@id='mail']");
-	By ageUnder18Radio = By.xpath("//label[@for='under_18']");
+	By ageUnder18Radio = By.xpath("//input[@id='under_18']");
 	By eduTextarea = By.xpath("//textarea[@id='edu']");
 	By jobRole01 = By.xpath("//select[@id='job1']");
 	By interestDevelopment = By.xpath("//input[@id='development']");
 	By slider01 = By.xpath("//input[@id='slider-1']");
 	By buttonEnable = By.xpath("//button[@id='button-enabled']");
 	By password = By.xpath("//input[@name='user_pass']");
-	By radioDisabled = By.xpath("//input[@id=''radio-disabled']");
+	By radioDisabled = By.xpath("//input[@id='radio-disabled']");
 	By biography = By.xpath("//textarea[@id='bio']");
 	By jobRole02 = By.xpath("//select[@id='job2']");
-	By interestDisabled = By.xpath("//input[@id='check-disbaled']']");
+	By interestDisabled = By.xpath("//input[@id='check-disbaled']");
 	By slider02 = By.xpath("//input[@id='slider-2']");
 	By buttonDisabled = By.xpath("//button[@id='button-disabled']");
 	
@@ -42,31 +42,60 @@ public class Topic_06_WebElement_WebBrowser {
 	}
 	 
 	// Fuction check element display
-	public boolean isElementDisplayed(By ok) {
-		if (driver.findElement(ok).isDisplayed()) {
-			System.out.println("Element " + ok + " is displayed" );
+	public boolean isElementDisplayed(By ok1) {
+		if (driver.findElement(ok1).isDisplayed()) {
+			System.out.println("Element " + ok1 + " is displayed" );
 			return true;
 		} else 
-			{
-			System.out.println("Element " + ok + " is not displayed" );
+		{
+			System.out.println("Element " + ok1 + " is not displayed" );
 			return false;
-			}
+		}
 		
 	}	
-	
-	public boolean isElementEnable(By tc2) {
-		if (driver.findElement(tc2).isEnabled()) {
-			System.out.println("Element " + tc2 + "is enabled");
+	public boolean isElementEnabled(By ok2) {
+		if (driver.findElement(ok2).isEnabled()) {
+			System.out.println("Element " + ok2 + " is enabled" );
 			return true;
 		} else 
+		{
+			System.out.println("Element " + ok2 + " is disabled" );
+			return false;
+		}
+	}	
+	public boolean isElementSelected(By ok3) {
+		if (driver.findElement(ok3).isSelected()) {
+			System.out.println("Element " + ok3 + " is selected" );
+			return false;
+		} else 
 			{
-				System.out.println("Element " + tc2 + "is disabled");
-				return false;
+			System.out.println("Element " + ok3 + " is not selected" );
+			return true;
 			}
-	
-	}
+	}	
 	
 	@Test
+	public void TC03_CheckElementIsSelected() {
+		//Step 1: Open the URL
+		driver.get("https://daominhdam.github.io/basic-form/index.html");
+		driver.findElement(ageUnder18Radio).click();
+		driver.findElement(interestDevelopment).click();
+		
+		if (isElementSelected(ageUnder18Radio)) {
+			System.out.println("Element Age Under 18 is selected");
+		} else {
+			driver.findElement(ageUnder18Radio).click();
+		}
+		if (isElementSelected(interestDevelopment)) {
+			System.out.println("Element Interest Development is selected");
+		} else {
+			driver.findElement(interestDevelopment).click();
+		}
+		 
+	}
+		
+	
+	//@Test
 	public void TC01_CheckElementIsDisplayed() {
 		//Step 1: Open the URL
 		driver.get("https://daominhdam.github.io/basic-form/index.html");
@@ -82,23 +111,85 @@ public class Topic_06_WebElement_WebBrowser {
 		}
 		
 	}
-	
-	
-	
-//	@Test
-//	public void TC02_CheckElementIsEnableDisable() {
-//	  //Step 1: Open the URL
-//	  driver.get("https://daominhdam.github.io/basic-form/index.html");
-//	  //Step 2: Check Email/ Age (Under 18)/ Education are enable/disable then fill data
-//	  if (isElementEnable(emailTextbox)) {
-//		  driver.findElement(emailTextbox)
-//		 
-//		
-//	}
-//	}
-	 
+	//@Test
+	public void TC02_CheckElementIsEnabled() {
+		//Step 1: Open the URL
+		driver.get("https://daominhdam.github.io/basic-form/index.html");
+		if (isElementEnabled(emailTextbox)) {
+			System.out.println("Element Email is enabled");
+		}	else {
+			System.out.println("Element Email is disabled");
+		}
+		if (isElementEnabled(ageUnder18Radio)) {
+			System.out.println("Element Age under 18 is enabled");
+		}	else {
+			System.out.println("Element Age under 18 is disabled");
+		}
+		if (isElementEnabled(eduTextarea)) {
+			System.out.println("Element Education is enabled");
+		}	else {
+			System.out.println("Element Education is disabled");
+		}
+		if (isElementEnabled(jobRole01)) {
+			System.out.println("Element Job Role 01 is enabled");
+		}	else {
+			System.out.println("Element Job Role 01 is disabled");
+		}
+		if (isElementEnabled(interestDevelopment)) {
+			System.out.println("Element Interests (Development) is enabled");
+		}	else {
+			System.out.println("Element Interests (Development) is disabled");
+		}
+		if (isElementEnabled(slider01)) {
+			System.out.println("Element Slider 01 is enabled");
+		}	else {
+			System.out.println("Element Slider 01 is disabled");
+		}
+		if (isElementEnabled(buttonDisabled)) {
+			System.out.println("Element Button is Disabled is enabled");
+		}	else {
+			System.out.println("Element Email is disabled");
+		}
+		if (isElementEnabled(buttonEnable)) {
+			System.out.println("Element Button is Enabled is enabled");
+		}	else {
+			System.out.println("Element Button is Enabled is disabled");
+		}
+		if (isElementEnabled(password)) {
+			System.out.println("Element Password is enabled");
+		}	else {
+			System.out.println("Element Password is disabled");
+		}
+		if (isElementEnabled(radioDisabled)) {
+			System.out.println("Element Age (Radiobutton is disabled) is enabled");
+		}	else {
+			System.out.println("Element Age (Radiobutton is disabled) is disabled");
+		}
+		if (isElementEnabled(biography)) {
+			System.out.println("Element Biography is enabled");
+		}	else {
+			System.out.println("Element Biography is disabled");
+		}
+		if (isElementEnabled(jobRole02)) {
+			System.out.println("Element Job Role 02 is enabled");
+		}	else {
+			System.out.println("Element Job Role 02 is disabled");
+		}
+		if (isElementEnabled(interestDisabled)) {
+			System.out.println("Element Interests (Checkbox is disabled) is enabled");
+		}	else {
+			System.out.println("Element Interests (Checkbox is disabled) is disabled");
+		}
+		if (isElementEnabled(slider02)) {
+			System.out.println("Element Slider 02 is enabled");
+		}	else {
+				System.out.println("Element Slider 02 is disabled");
+			}
+			
+		
+		}
 
-
+	
 	@AfterTest
 	public void afterTest() {
 	}
