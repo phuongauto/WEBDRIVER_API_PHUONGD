@@ -41,7 +41,7 @@ public class Topic_03_WebElement_WebBrowser {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 	 
-// 	Fuction check element display
+// 	Function check element display
 //	public boolean isElementDisplayed(By ok1) {
 //		if (driver.findElement(ok1).isDisplayed()) {
 //			System.out.println("Element " + ok1 + " is displayed" );
