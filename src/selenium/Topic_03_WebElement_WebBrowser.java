@@ -64,7 +64,7 @@ public class Topic_03_WebElement_WebBrowser {
 //			return false;
 //		}
 //	}	
-//	Fuction check element is selected	
+//	Function check element is selected	
 //	public boolean isElementSelected(By ok3) {
 //		if (driver.findElement(ok3).isSelected()) {
 //			System.out.println("Element " + ok3 + " is selected" );
