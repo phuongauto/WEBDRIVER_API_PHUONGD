@@ -53,7 +53,7 @@ public class Topic_03_WebElement_WebBrowser {
 //		}
 //		
 //	}	
-//	Fuction check element is enabled	
+//	Function check element is enabled	
 //	public boolean isElementEnabled(By ok2) {
 //		if (driver.findElement(ok2).isEnabled()) {
 //			System.out.println("Element " + ok2 + " is enabled" );
