@@ -53,7 +53,7 @@ public class Topic_03_WebElement_WebBrowser {
 //		}
 //		
 //	}	
-//	Fuction check element enabled	
+//	Fuction check element is enabled	
 //	public boolean isElementEnabled(By ok2) {
 //		if (driver.findElement(ok2).isEnabled()) {
 //			System.out.println("Element " + ok2 + " is enabled" );
@@ -64,7 +64,7 @@ public class Topic_03_WebElement_WebBrowser {
 //			return false;
 //		}
 //	}	
-//	Fuction check element selected	
+//	Fuction check element is selected	
 //	public boolean isElementSelected(By ok3) {
 //		if (driver.findElement(ok3).isSelected()) {
 //			System.out.println("Element " + ok3 + " is selected" );
