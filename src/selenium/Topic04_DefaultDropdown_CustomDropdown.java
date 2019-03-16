@@ -71,8 +71,8 @@ public class Topic04_DefaultDropdown_CustomDropdown {
 			  break;
 		  }
 	  }
-	  /*
-	  for-each
+	  /* Sử dụng cái for-each này cũng được, thay cho vòng lặp For bên trên
+	  
 	  for(WebElement childElement: allItems) {
 		  if(childElement.getText().equals(expectedvalueItem)) {
 			  System.out.println("Text moi lan chon duoc la:" + childElement.getText());
@@ -84,21 +84,12 @@ public class Topic04_DefaultDropdown_CustomDropdown {
   }
 
  
-  @Test(enabled = false)
+  @Test(enabled = true)
   public void TC01_DefaultDropdown() throws Exception {
 
 	  driver.get("https://daominhdam.github.io/basic-form/index.html");
-	  /*Step 01 - Truy cập vào trang: https://daominhdam.github.io/basic-form/index.html
-	Step 02 - Kiểm tra dropdown Job Role 01 không hỗ trợ thuộc tính multi-select
-	Step 03 - Chọn giá trị Automation Tester trong dropdown bằng phương thức selectVisible
-	Step 04 - Kiểm tra giá trị đã được chọn thành công
-	Step 05 - Chọn giá trị Manual Tester trong dropdown bằng phương thức selectValue
-	Step 06 - Kiểm tra giá trị đã được chọn thành công
-	Step 07 - Chọn giá trị Mobile Tester trong dropdown bằng phương thức selectIndex
-	Step 08 - Kiểm tra giá trị đã được chọn thành công
-	Step 09 - Kiểm tra dropdown có đủ 5 giá trị
-	   */	
-	  //Khoi tao 1 bien dang webelement dai dien cho cai dropdown
+	  
+	  //Khoi tao 1 bien dang WebElement dai dien cho cai dropdown
 	  WebElement jobRole01 = driver.findElement(By.xpath("//select[@id='job1']"));
 	  //Su dung thu vien Select de handle cai dropdown
 	  Select jobRoleSelect = new Select(jobRole01);
@@ -122,7 +113,7 @@ public class Topic04_DefaultDropdown_CustomDropdown {
 	  Thread.sleep(2000);
   }
   
-  @Test(enabled = false)
+  @Test(enabled = true)
   public void TC02_CustomDropdown_jqueryui () throws Exception {
 	  driver.get("http://jqueryui.com/resources/demos/selectmenu/default.html");
 	  selectItemInCustomDropdown("//span[@id='number-button']", "//ul[@id='number-menu']//li/div", "19");
@@ -130,32 +121,28 @@ public class Topic04_DefaultDropdown_CustomDropdown {
 	  Assert.assertTrue(isElementDisplayed("//span[@id='number-button']//span[@class='ui-selectmenu-text' and text()='19']"));  
   }
   
-  @Test(enabled = false)
+  @Test(enabled = true)
   public void TC03_CustomDropdown_Material_Angular () throws Exception {
 	  driver.get("https://material.angular.io/components/select/examples");
 	  selectItemInCustomDropdown("//mat-select[@placeholder='State']", "//mat-option/span", "California");
 	  Assert.assertTrue(isElementDisplayed("//div[@class='mat-select-value']//span[@class='ng-tns-c21-18 ng-star-inserted']"));
   }
   
-  @Test(enabled = false)
+  @Test(enabled = true)
   public void TC04_Custom_Dropdown_Telerik_CapColor () throws Exception {
 	  driver.get("https://demos.telerik.com/kendo-ui/dropdownlist/index");
 	  selectItemInCustomDropdown("//span[@aria-owns='color_listbox']", "//ul[@id='color_listbox']/li", "Orange");
-	  Assert.assertTrue(isElementDisplayed("//span[@aria-owns='color_listbox']//span[text()='Orange']"));
-	  
-//	  selectItemInCustomDropdown("//span[@aria-owns='color_listbox']", "//ul[@id='color_listbox']/li", "Black");
-//	  Assert.assertTrue(isElementDisplayed("//span[@aria-owns='color_listbox']//span[text()='Black']"));
-//	  
+	  Assert.assertTrue(isElementDisplayed("//span[@aria-owns='color_listbox']//span[text()='Orange']"));  
   }
   
-  @Test(enabled = false)
+  @Test(enabled = true)
   public void TC05_Custom_Dropdown_Telerik_Capsize () throws Exception {
 	  driver.get("https://demos.telerik.com/kendo-ui/dropdownlist/index");
 	  selectItemInCustomDropdown("//span[@aria-owns='size_listbox']", "//ul[@id='size_listbox']/li", "XL - 7 5/8");
 	  Assert.assertTrue(isElementDisplayed("//span[@aria-owns='size_listbox']//span[@class='k-input']"));
   }	  
   
-  @Test(enabled = false)
+  @Test(enabled = true)
   public void TC6_Custom_Dropdown_Vue() throws Exception {
 	  driver.get("https://mikerodham.github.io/vue-dropdowns/");
 	  selectItemInCustomDropdown("//li[@class='dropdown-toggle']", "//ul[@class='dropdown-menu']//a", "Third Option");
