@@ -66,7 +66,15 @@ public class SelectItemInCustomDropdown {
 		  if(childElement.getText().equals(expectedvalueItem)) {
 			  System.out.println("Text moi lan chon duoc la:" + childElement.getText());
 			  javascriptExecutor.executeScript("arguments[0].scrollIntoView(true)", childElement);
-			  childElement.click();
+				if (childElement.isDisplayed()){
+				
+			  	//selenium click 
+			  	childElement.click();}
+			  	else
+			  	{
+			  		javascriptExecutor.executeScript("arguments[0].click()", childElement);
+			  	}
+			  Thread.sleep(2000);	
 			  break;
 		  }
 	  }*/
@@ -86,6 +94,7 @@ public class SelectItemInCustomDropdown {
 		  return false;
 	  }
   }
+  
   @AfterTest
   public void afterTest() {
 	  driver.quit();
