@@ -54,19 +54,21 @@ public class Topic04_DefaultDropdown_CustomDropdown {
 	  
 	  List <WebElement> allItems = driver.findElements(By.xpath(allItemXpath));
 	  
-	  
 	  System.out.println("Tat ca phan tu trong dropdown =" + allItems.size());
 	  //Duyệt qua hết tất cả các phần tử cho tới khi thỏa mãn điều kiện
 	  for(int i=0; i<allItems.size(); i++) {
 		  // ví dụ allItems.get(0) = một cái WebElement để mà click/sendkey/getText/...
 		  if (allItems.get(i).getText().equals(expectedvalueItem)) {
-			  System.out.println("Text moi lan chon duoc la:" + allItems.get(i).getText());
 			  
 			  //3. Scroll tới item cần chọn (javascript executor scroll to element)
 			  javascriptExecutor.executeScript("arguments[0].scrollIntoView(true)", allItems.get(i));
 			  Thread.sleep(2000);
 			  //4. Click vào item cần chọn
-			  allItems.get(i).click();
+			  if(allItems.get(i).isDisplayed() ) {
+				  allItems.get(i).click();
+			  }		else {
+				  			javascriptExecutor.executeScript("arguments[0].click()", allItems.get(i));
+			  			 }
 			  Thread.sleep(2000);
 			  break;
 		  }
@@ -77,7 +79,13 @@ public class Topic04_DefaultDropdown_CustomDropdown {
 		  if(childElement.getText().equals(expectedvalueItem)) {
 			  System.out.println("Text moi lan chon duoc la:" + childElement.getText());
 			  javascriptExecutor.executeScript("arguments[0].scrollIntoView(true)", childElement);
-			  childElement.click();
+			  Thread.sleep(2000);
+			  if(childElement.isElementDisplayed()){
+			  	childElement.click();
+			  }	else {
+			  			javascriptExecutor.executeScript("arguments[0].click()", childElement);
+			  }
+			  Thread.sleep(2000);
 			  break;
 		  }
 	  }*/
