@@ -15,7 +15,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TOPIC_05_DROPDOWNLIST_Phuoc {
+public class TOPIC_04_Custom_DROPDOWN_Phuoc {
     WebDriver driver;
 	WebDriverWait waitExplicit;
 	JavascriptExecutor executor;
