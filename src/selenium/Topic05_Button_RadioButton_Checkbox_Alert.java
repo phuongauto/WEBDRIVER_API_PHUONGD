@@ -32,7 +32,7 @@ public class Topic05_Button_RadioButton_Checkbox_Alert {
 	  
   }
   
-  //@Test  
+  @Test  
   public void TC_01() throws Exception {  
 		
 		driver.get("http://live.guru99.com/");
@@ -49,7 +49,7 @@ public class Topic05_Button_RadioButton_Checkbox_Alert {
   }
   
   
-  //@Test
+  @Test
   public void TC_02() {
 	  driver.get("http://demos.telerik.com/kendo-ui/styling/checkboxes");
 	  //click vào label 
@@ -63,7 +63,7 @@ public class Topic05_Button_RadioButton_Checkbox_Alert {
   }
   
   
-  //@Test
+  @Test
   public void TC_03() {
 	  driver.get("http://demos.telerik.com/kendo-ui/styling/radios");
 	  //click vào label 
@@ -78,7 +78,7 @@ public class Topic05_Button_RadioButton_Checkbox_Alert {
   }
 
   
-  //@Test
+  @Test
   public void TC_04() throws Exception {
 	  
 	  driver.get("https://daominhdam.github.io/basic-form/index.html");
@@ -94,7 +94,7 @@ public class Topic05_Button_RadioButton_Checkbox_Alert {
 	  Assert.assertEquals(result01.getText(), "You clicked an alert successfully"); 
   }
   
-  //@Test
+  @Test
   public void TC_05() throws Exception {
 	  
 	  driver.get("https://daominhdam.github.io/basic-form/index.html");
@@ -110,7 +110,7 @@ public class Topic05_Button_RadioButton_Checkbox_Alert {
 	  Assert.assertEquals(result02.getText(), "You clicked: Cancel"); 
   }
   
-  //@Test
+  @Test
   public void TC06() {
 	  driver.get("https://daominhdam.github.io/basic-form/index.html");
 	  driver.findElement(By.xpath("//button[text()='Click for JS Prompt']")).click();
@@ -125,14 +125,8 @@ public class Topic05_Button_RadioButton_Checkbox_Alert {
   
   @Test
   public void TC07() {
-	  driver.get("http://admin:admin@http://the-internet.herokuapp.com/basic_auth");
-	  Assert.assertEquals(driver.findElement(By.xpath("//div[@class='example']/p")).getText(), "Congratulations! You must have the proper credentials.");
-	  
-	  
-	  
-	  
-	  
-	  
+	  driver.get("http://admin:admin@the-internet.herokuapp.com/basic_auth");
+	  Assert.assertEquals(driver.findElement(By.xpath("//div[@class='example']/p")).getText(), "Congratulations! You must have the proper credentials.");  
   }
   @AfterTest
   public void afterTest() {
