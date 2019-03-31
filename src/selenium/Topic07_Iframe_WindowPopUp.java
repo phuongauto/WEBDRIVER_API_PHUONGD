@@ -35,7 +35,7 @@ public class Topic07_Iframe_WindowPopUp {
 	  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
   }
 
-  //@Test
+  @Test
   public void TC01() {
 	  driver.get("http://hdfcbank.com");
 	  /*Tại sao phải wait 10 giây? 
@@ -109,8 +109,6 @@ public class Topic07_Iframe_WindowPopUp {
 		  Assert.assertTrue(banner.isDisplayed());
 		  //System.out.println("8 flip banner element = real image and they are displayed");
 	  }
-	  
-	  
   }
   
   
@@ -182,27 +180,27 @@ public class Topic07_Iframe_WindowPopUp {
   }
   
   
-  //@Test
+  @Test
   public void TC02() throws Exception {
 	  driver.get("https://daominhdam.github.io/basic-form/index.html");
-	  String parentID = driver.getWindowHandle();
-	  System.out.println("Parent ID = " + parentID);
+	  String parentID02 = driver.getWindowHandle();
+	  System.out.println("Parent ID = " + parentID02);
 	  
 	  driver.findElement(By.xpath("//a[text()='Click Here']")).click();
 	  Thread.sleep(2000);
-	  switchToChildWindowByID(parentID);
+	  switchToChildWindowByID(parentID02);
 	  
 	  String googleTitle = driver.getTitle();
 	  Assert.assertEquals(googleTitle, "Google");
 	  
-	  Assert.assertTrue(closeAllWithoutParentWindows(parentID));
+	  Assert.assertTrue(closeAllWithoutParentWindows(parentID02));
 	  Thread.sleep(2000);
 	  
 	  Assert.assertEquals(driver.getTitle(), "SELENIUM WEBDRIVER FORM DEMO");
   }
   
-  //@Test
-  public void TC03() {
+  @Test
+  public void TC03() throws Exception {
 	  driver.get("http://www.hdfcbank.com/");
 	  String parentID03 = driver.getWindowHandle();
 	  
@@ -224,6 +222,7 @@ public class Topic07_Iframe_WindowPopUp {
 	  
 	  // Step 03 - Click Angri link -> Mở ra tab/window mới -> Switch qua tab mới
 	  driver.findElement(By.xpath("//li//a[text()='Agri']")).click();
+	  Thread.sleep(3000);
 	  switchToWindowByTitle("HDFC Bank Kisan Dhan Vikas e-Kendra");
 	  
 	  // Step 04 - Click Account Details link -> Mở ra tab/window mới -> Switch qua tab mới
@@ -270,7 +269,7 @@ public class Topic07_Iframe_WindowPopUp {
   }
   @AfterTest
   public void afterTest() {
-	  //driver.quit();
+	  driver.quit();
   }
 
 }
