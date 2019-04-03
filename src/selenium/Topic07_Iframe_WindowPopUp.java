@@ -205,21 +205,13 @@ public class Topic07_Iframe_WindowPopUp {
 	  String parentID03 = driver.getWindowHandle();
 	  
 	  // Step 02 - Kiểm tra và close quảng cáo nếu có xuất hiện
-	  List <WebElement> popUps = driver.findElements(By.xpath("//iframe[@id='vizury-notification-template']"));
+	  List <WebElement> popUps = driver.findElements(By.xpath("//div[@id='parentdiv']/a/img"));
 	  int popUpsize = popUps.size();
 	  if(popUpsize > 0) {
-		  driver.switchTo().frame(popUps.get(0));
 		  System.out.println("There is a pop up appears!");
-		  
-		  // Kiểm tra xem cái image xuất hiện thì mình đang làm đúng
-		  Assert.assertTrue(driver.findElement(By.xpath("//div[@id='container-div']/img")).isDisplayed());
-		  
 		  // Close cái pop up
-		  js.executeScript("arguments[0].click()", driver.findElement(By.xpath("//div[@id='div-close']")));
+		  js.executeScript("arguments[0].click()", driver.findElement(By.xpath("//img[@class='popupCloseButton']")));
 	  }
-	  
-	  driver.switchTo().parentFrame();
-	  
 	  // Step 03 - Click Angri link -> Mở ra tab/window mới -> Switch qua tab mới
 	  driver.findElement(By.xpath("//li//a[text()='Agri']")).click();
 	  Thread.sleep(3000);
