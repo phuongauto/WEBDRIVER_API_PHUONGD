@@ -264,17 +264,14 @@ public class Topic09_UploadFiles {
 	  randomFolder.click();
 	  
 	  // nếu vào folder không có item nào thì quay trở lại
-//	  if (driver.findElement(By.xpath("//div[@class='sizeinfo']//span[text()='0 files / 0 folders / 0 KB']")).isDisplayed()) {
-//		  driver.findElement(By.xpath("//a[text()='uploads']")).click();
-//		  // tiếp tục vào 1 folder khác
-//		  Random r2 = new java.util.Random();
-//		  List<WebElement> uploadedFolders2 = driver.findElements(By.xpath("//table[@id='filelist']//tr[contains(@class,'dirrow')]"));
-//		  WebElement randomFolder2 = uploadedFolders2.get(r2.nextInt(uploadedFolders2.size()));
-//		  randomFolder2.click();
-//	  } else {
-//		  Assert.assertTrue(driver.findElement(By.xpath("//td[@class='fname thumb']//a[@class='thumb']")).isDisplayed());
-//	  }
+	  if (driver.findElement(By.xpath("//div[@class='sizeinfo']//span[text()='1 files / 0 folders / 0 KB']")).isDisplayed()) {
+		  
+		  //driver.findElement(By.xpath("//a[text()='uploads']")).click();
+	  } else if (driver.findElement(By.xpath("//div[@class='sizeinfo']//span[text()='0 files / 0 folders / 0 KB']")).isDisplayed()) {
+		  System.out.println("Folder này có file được upload lên");
+	  }
 	  
+	  Assert.assertTrue(driver.findElement(By.xpath("//td[@class='fname thumb']//a[@class='thumb']")).isDisplayed());
 	  
 
 	  
