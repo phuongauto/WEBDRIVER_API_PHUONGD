@@ -53,24 +53,14 @@ public class Topic09_UploadFiles {
   
   @BeforeTest
   public void beforeTest() {
-	  System.setProperty("webdriver.chrome.driver", ".\\driver\\chromedriver.exe");
-	  driver = new ChromeDriver();
-	  
-	  js = (JavascriptExecutor)	driver;
-	  waitExplicit = new WebDriverWait(driver, 30);
-	  
-	  System.out.println("Root folder path:" + rootFolder);
-	  System.out.println("file 01 path: " + fileNamePath01);
-	  System.out.println("file 02 path: " + fileNamePath02);
-	  System.out.println("file 03 path: " + fileNamePath03);
-	  
+//	  System.setProperty("webdriver.chrome.driver", ".\\driver\\chromedriver.exe");
+//	  driver = new ChromeDriver();
 //	  System.setProperty("webdriver.gecko.driver", ".\\driver\\geckodriver.exe");
 //	  driver = new FirefoxDriver();
-  
-	  
-	  
-//	  System.setProperty("webdriver.ie.driver", ".\\driver\\IEDriverServer.exe");
-//	  driver = new InternetExplorerDriver();
+	  System.setProperty("webdriver.ie.driver", ".\\driver\\IEDriverServer.exe");
+	  driver = new InternetExplorerDriver();
+	  js = (JavascriptExecutor)	driver;
+	  waitExplicit = new WebDriverWait(driver, 30);
   }
   
   //Tao random de dung cho email
@@ -79,25 +69,17 @@ public class Topic09_UploadFiles {
 	  return random;
   }
   
-  //@Test
+  @Test
   public void TC01_SendKeys_Multiple_Upload() throws Exception {
 	  driver.get("http://blueimp.github.com/jQuery-File-Upload/");
 	  Thread.sleep(3000);
 	  
 	  // Step 02 - Sử dụng phương thức sendKeys để upload file nhiều file cùng lúc chạy cho 3 trình duyệt (IE/ Firefox/ Chrome)
-	  if (driver.toString().contains("chrome")  || driver.toString().contains("firefox")) {
-      WebElement uploadFile =  driver.findElement(By.xpath("//input[@type='file']"));
-      uploadFile.sendKeys(fileNamePath01 + "\n" + fileNamePath02 + "\n" + fileNamePath03);
+      WebElement uploadFileButton =  driver.findElement(By.xpath("//input[@type='file']"));
+      uploadFileButton.sendKeys(fileNamePath01 + "\n" + fileNamePath02 + "\n" + fileNamePath03);
       Thread.sleep(1000);
-	  } else {
-          // Chưa handle được case sendkey multiple vào IE :(
-		  System.out.println("Go to IE");
-          WebElement uploadFile =  driver.findElement(By.xpath("//input[@type='file']"));
-          js.executeScript("arguments[0].click()", uploadFile);
-          uploadFile.sendKeys(fileNamePath01 + "\n" + fileNamePath02 + "\n" + fileNamePath03);
-          Thread.sleep(1000);
-	  }
 	  
+      waitExplicit.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[@class='col-lg-7']")));
 	  // Step 03 - Kiểm tra file đã được chọn thành công
 	  Assert.assertTrue(driver.findElement(By.xpath("//p[text()='picture 01.png']")).isDisplayed());
 	  Assert.assertTrue(driver.findElement(By.xpath("//p[text()='picture 02.jpg']")).isDisplayed());
@@ -106,7 +88,13 @@ public class Topic09_UploadFiles {
 	  // Step 04 - Click Start button để upload cho cả 3 file
 	  List <WebElement> startButtons = driver.findElements(By.xpath("//span[text()='Start']"));
 	  for(WebElement startButton: startButtons) {
-		  startButton.click();
+		  if(driver.toString().contains("internet explorer")) {
+			  js.executeScript("arguments[0].click()", startButton);
+			  System.out.println("Click by JS for ie");
+		  }	else {
+			  		startButton.click();
+			  		System.out.println("Click by selenium builtin");
+		  		 }
 		  Thread.sleep(1500);
 	  }
 	  
@@ -265,13 +253,12 @@ public class Topic09_UploadFiles {
 	  
 	  // nếu vào folder không có item nào thì quay trở lại
 	  if (driver.findElement(By.xpath("//div[@class='sizeinfo']//span[text()='1 files / 0 folders / 0 KB']")).isDisplayed()) {
-		  
+		  Assert.assertTrue(driver.findElement(By.xpath("//td[@class='fname thumb']//a[@class='thumb']")).isDisplayed());
 		  //driver.findElement(By.xpath("//a[text()='uploads']")).click();
 	  } else if (driver.findElement(By.xpath("//div[@class='sizeinfo']//span[text()='0 files / 0 folders / 0 KB']")).isDisplayed()) {
 		  System.out.println("Folder này có file được upload lên");
 	  }
 	  
-	  Assert.assertTrue(driver.findElement(By.xpath("//td[@class='fname thumb']//a[@class='thumb']")).isDisplayed());
 	  
 
 	  
