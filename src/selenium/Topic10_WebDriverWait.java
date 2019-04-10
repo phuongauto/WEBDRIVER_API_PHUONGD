@@ -120,7 +120,7 @@ public class Topic10_WebDriverWait {
   
   public Date getDateTimeSecond() {
       Date date = new Date();
-      date = new Timestamp(date.getTime());
+      //date = new Timestamp(date.getTime());
       return date;
   }
   @AfterTest
