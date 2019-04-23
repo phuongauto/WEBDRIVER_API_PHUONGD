@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="Suite" parallel="false">
-  <test name="Test">
+<suite name="Selenium WebDriver API" parallel="tests" thread-count="3" >
+
+  <parameter name ="username" value="mngr181356@gmail.com"/>  
+  <parameter name ="password" value="123456"/>  
+  
+  <test name="Run Test on CHROME Browser">
+  <parameter name = "browser" value="chrome"/>
     <classes>
-      <class name="selenium.TestNG_01_Annotation"/>
+      	<class name="testNG.TestNG_04_MultiBrowsers"/>
     </classes>
-  </test> <!-- Test -->
-</suite> <!-- Suite -->
+  </test> 
+  
+  <test name="Run Test on FIREFOX Browser">
+  <parameter name = "browser" value="firefox"/>
+    <classes>
+      	<class name="testNG.TestNG_04_MultiBrowsers"/>
+    </classes>
+  </test> 
+  
+  <test name="Run Test on Chrome Headless Browser">
+  <parameter name = "browser" value="headless"/>
+    <classes>
+      	<class name="testNG.TestNG_04_MultiBrowsers"/>
+    </classes>
+  </test> 
+</suite> 
