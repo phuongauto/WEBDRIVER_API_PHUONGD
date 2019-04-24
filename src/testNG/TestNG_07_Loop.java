@@ -14,33 +14,24 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class TestNG_04_MultiBrowsers {
-  WebDriver driver;
+public class TestNG_07_Loop {
+  WebDriver driver;  
+  
   
   @Parameters("browser")
   @BeforeTest
   public void preCondition(String browserName) {
-	  
-	  if(browserName.equals("chrome")) {
-		  System.setProperty("webdriver.chrome.driver", ".\\driver\\chromedriver.exe");
-		  driver = new ChromeDriver();
-	  } else if (browserName.equals("firefox")) {
-		  System.setProperty("webdriver.gecko.driver", ".\\driver\\geckodriver.exe");
-		  driver = new FirefoxDriver();
-	  } else if (browserName.equalsIgnoreCase("headless")) {
-		  System.setProperty("webdriver.chrome.driver", ".\\driver\\chromedriver.exe");
-		  ChromeOptions options = new ChromeOptions();
-		  options.addArguments("headless");
-		  options.addArguments("window-size=1500x900");
-		  driver = new ChromeDriver(options);
-	  }
-	  driver.get("http://live.guru99.com/index.php/customer/account/login/");
+	  System.setProperty("webdriver.chrome.driver", ".\\driver\\chromedriver.exe");
+	  driver = new ChromeDriver();
 	  driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
   }
 
+  // (invocationCount=3) đặt cạnh @Test để nó chạy lặp lại 3 lần
+  
   @Parameters({"username","password"})
-  @Test
+  @Test(invocationCount=3)
   public void TC01_LoginWithValidInformation(String username, String password) {
+	  driver.get("http://live.guru99.com/index.php/customer/account/login/");
 	  driver.findElement(By.xpath("//input[@id='email']")).sendKeys(username);
 	  driver.findElement(By.xpath("//input[@type='password']")).sendKeys(password);
 	  driver.findElement(By.xpath("//button[@id='send2']")).click();
@@ -49,7 +40,6 @@ public class TestNG_04_MultiBrowsers {
 	  driver.findElement(By.xpath("//span[text()='Account']")).click();
 	  driver.findElement(By.xpath("//a[text()='Log Out']")).click();
 	  Assert.assertTrue(driver.findElement(By.xpath("//h2[contains(text(),'This is demo site for')]")).isDisplayed());
-
   }
 
   

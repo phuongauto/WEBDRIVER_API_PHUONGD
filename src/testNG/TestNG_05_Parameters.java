@@ -14,30 +14,24 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class TestNG_04_MultiBrowsers {
+public class TestNG_05_Parameters {
   WebDriver driver;
   
-  @Parameters("browser")
   @BeforeTest
-  public void preCondition(String browserName) {
-	  
-	  if(browserName.equals("chrome")) {
-		  System.setProperty("webdriver.chrome.driver", ".\\driver\\chromedriver.exe");
-		  driver = new ChromeDriver();
-	  } else if (browserName.equals("firefox")) {
-		  System.setProperty("webdriver.gecko.driver", ".\\driver\\geckodriver.exe");
-		  driver = new FirefoxDriver();
-	  } else if (browserName.equalsIgnoreCase("headless")) {
-		  System.setProperty("webdriver.chrome.driver", ".\\driver\\chromedriver.exe");
-		  ChromeOptions options = new ChromeOptions();
-		  options.addArguments("headless");
-		  options.addArguments("window-size=1500x900");
-		  driver = new ChromeDriver(options);
-	  }
+  public void preCondition() {
+	  System.setProperty("webdriver.chrome.driver", ".\\driver\\chromedriver.exe");
+	  driver = new ChromeDriver();
 	  driver.get("http://live.guru99.com/index.php/customer/account/login/");
 	  driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
   }
-
+  
+  
+  // truyền 2 biến chạy = parameter từ bên file xml vào cái @Test này 
+  // bên xml ta sẽ có 2 dòng sau:
+  // <parameter name ="username" value="mngr181356@gmail.com"/>  
+  // <parameter name ="password" value="123456"/> 
+  
+  
   @Parameters({"username","password"})
   @Test
   public void TC01_LoginWithValidInformation(String username, String password) {
@@ -45,14 +39,11 @@ public class TestNG_04_MultiBrowsers {
 	  driver.findElement(By.xpath("//input[@type='password']")).sendKeys(password);
 	  driver.findElement(By.xpath("//button[@id='send2']")).click();
 	  Assert.assertTrue(driver.findElement(By.xpath("//h1[text()='My Dashboard']")).isDisplayed());
-	  
 	  driver.findElement(By.xpath("//span[text()='Account']")).click();
 	  driver.findElement(By.xpath("//a[text()='Log Out']")).click();
 	  Assert.assertTrue(driver.findElement(By.xpath("//h2[contains(text(),'This is demo site for')]")).isDisplayed());
-
   }
 
-  
  @AfterTest
  public void postCondition() {
 	 driver.quit();

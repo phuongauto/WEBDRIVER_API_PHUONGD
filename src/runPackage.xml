@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Run Package" parallel="tests" thread-count="3" >
+  
+  <parameter name ="username" value="mngr181356@gmail.com"/>  
+  <parameter name ="password" value="123456"/>  
+  
+  <test name="Run Test on CHROME Browser">
+  <parameter name = "browser" value="chrome"/>
+  
+    <packages>
+    	<package name="testNG"/>
+    </packages>
+    
+  </test> 
+</suite> 

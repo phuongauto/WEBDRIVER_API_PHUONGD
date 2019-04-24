@@ -23,8 +23,6 @@ public class TestNG_03_DataProvider {
 	  driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 	  
   }
-
-  
   
   @Test(dataProvider = "userPassInfor")
   public void TC01_LoginWithValidInformation(String username, String password) {

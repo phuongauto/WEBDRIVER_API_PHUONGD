@@ -14,7 +14,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class TestNG_04_MultiBrowsers {
+public class TestNG_06_Parallel {
   WebDriver driver;
   
   @Parameters("browser")
@@ -34,10 +34,18 @@ public class TestNG_04_MultiBrowsers {
 		  options.addArguments("window-size=1500x900");
 		  driver = new ChromeDriver(options);
 	  }
+	  
 	  driver.get("http://live.guru99.com/index.php/customer/account/login/");
 	  driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+	  
   }
-
+  
+  /* Trong file xml thì set cho parallel="tests" để chạy toàn bộ các @Test
+   * set thread-count="3" là để cho 3 trình duyệt cùng chạy song song
+   * <suite name="Selenium WebDriver API" parallel="tests" thread-count="3" >
+  */
+  
+  
   @Parameters({"username","password"})
   @Test
   public void TC01_LoginWithValidInformation(String username, String password) {
