@@ -22,6 +22,12 @@ public class TestNG_08_Dependencies {
 	  System.out.println("Run TC 01");
   }
 	
+  // đã tới 1:35:18 
+  
+  
+  
+  
+  
   // TC02 chỉ được chạy khi TC01 pass
   @Test(description = "Create new Customter", dependsOnMethods="TC01")
 	public void TC02() {

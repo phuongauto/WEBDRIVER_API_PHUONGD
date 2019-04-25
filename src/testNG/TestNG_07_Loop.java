@@ -26,7 +26,7 @@ public class TestNG_07_Loop {
 	  driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
   }
 
-  // (invocationCount=3) đặt cạnh @Test để nó chạy lặp lại 3 lần
+  // (invocationCount=3) đặt cạnh @Test để nó chạy lặp lại 3 lần. Còn cái BeforeTest chỉ chạy 1 lần cho tất cả các testcases bên dưới.
   
   @Parameters({"username","password"})
   @Test(invocationCount=3)
