@@ -17,7 +17,7 @@ import org.testng.annotations.Test;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterTest;
 
-public class Topic_03_WebElement_WebBrowser {
+public class Topic_03_WebElement_WebBrowser_commands {
 	WebDriver driver;
 	By emailTextbox = By.xpath("//input[@id='mail']");
 	By ageUnder18Radio = By.xpath("//input[@id='under_18']");

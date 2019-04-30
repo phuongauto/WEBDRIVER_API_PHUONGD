@@ -22,13 +22,16 @@ public class TestNG_04_MultiBrowsers {
   public void preCondition(String browserName) {
 	  
 	  if(browserName.equals("chrome")) {
-		  System.setProperty("webdriver.chrome.driver", ".\\driver\\chromedriver.exe");
+		  System.setProperty("webdriver.chrome.driver", "driver/chromedrivermac");
 		  driver = new ChromeDriver();
 	  } else if (browserName.equals("firefox")) {
-		  System.setProperty("webdriver.gecko.driver", ".\\driver\\geckodriver.exe");
+		  // chạy trên windows: 
+		   System.setProperty("webdriver.gecko.driver", "driver/geckodriver.exe");
+		  // chạy trên mac
+		  //System.setProperty("webdriver.gecko.driver", "./driver/geckodriver");
 		  driver = new FirefoxDriver();
 	  } else if (browserName.equalsIgnoreCase("headless")) {
-		  System.setProperty("webdriver.chrome.driver", ".\\driver\\chromedriver.exe");
+		  System.setProperty("webdriver.chrome.driver", "driver/chromedrivermac");
 		  ChromeOptions options = new ChromeOptions();
 		  options.addArguments("headless");
 		  options.addArguments("window-size=1500x900");

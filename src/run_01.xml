@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Test Suite 01" parallel="tests" thread-count="3" >
-
-  <parameter name ="username" value="mngr181356@gmail.com"/>  
-  <parameter name ="password" value="123456"/>  
+	
+<!-- 2 parameter này để truyền vào cái @Test nào mà nó được set -->
+	<parameter name ="username" value="mngr181356@gmail.com"/>  
+	<parameter name ="password" value="123456"/>  
   
   <test name="Run Test on FIREFOX Browser">
   <parameter name = "browser" value="firefox"/>

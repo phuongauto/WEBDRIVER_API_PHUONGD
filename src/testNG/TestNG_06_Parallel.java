@@ -41,8 +41,8 @@ public class TestNG_06_Parallel {
   }
   
   /* Trong file xml thì set cho parallel="tests" để chạy toàn bộ các @Test
-   * set thread-count="3" là để cho 3 trình duyệt cùng chạy song song
-   * <suite name="Selenium WebDriver API" parallel="tests" thread-count="3" >
+   * set thread-count="3" là để cho 3 trình duyệt cùng chạy song song như sau:
+     <suite name="Selenium WebDriver API" parallel="tests" thread-count="3" >
   */
   
   

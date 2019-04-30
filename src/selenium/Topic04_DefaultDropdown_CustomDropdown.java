@@ -77,14 +77,17 @@ public class Topic04_DefaultDropdown_CustomDropdown {
 	  
 	  for(WebElement childElement: allItems) {
 		  if(childElement.getText().equals(expectedvalueItem)) {
-			  System.out.println("Text moi lan chon duoc la:" + childElement.getText());
 			  javascriptExecutor.executeScript("arguments[0].scrollIntoView(true)", childElement);
 			  Thread.sleep(2000);
-			  if(childElement.isElementDisplayed()){
+			  if(childElement.isElementDisplayed())
+			  {
+			  	//selenium click
 			  	childElement.click();
-			  }	else {
-			  			javascriptExecutor.executeScript("arguments[0].click()", childElement);
-			  }
+			  }	else 	
+			  			{
+			  				//javascript click
+			  				javascriptExecutor.executeScript("arguments[0].click()", childElement);
+			  			}
 			  Thread.sleep(2000);
 			  break;
 		  }
